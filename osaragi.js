@@ -1,8 +1,7 @@
 // BASE CREATE BY Ruztan
-// Recode FallZx
+// Recode FallZx,QyuuNee
 
-// Osaragi V3.0
-// YT: QyuuNee
+// SnapBotz
 
 require("./settings")
 const welcome = JSON.parse(fs.readFileSync('./all/database/welcome.json'))
@@ -178,8 +177,6 @@ async function main() {
 if (!osaragi.public) {
 if (!m.key.fromMe && !isCreator) return
 }
-
-if (m.fromMe) return
 
 async function tiktok2(query) {
   return new Promise(async (resolve, reject) => {
