@@ -1,7 +1,8 @@
 // BASE CREATE BY Ruztan
-// Recode QyuuNee
+// Recode FallZx
 
-// SnapBotz
+// Osaragi V3.0
+// YT: QyuuNee
 
 require("./settings")
 const welcome = JSON.parse(fs.readFileSync('./all/database/welcome.json'))
@@ -115,7 +116,7 @@ let participant_sender = m.isGroup ? groupMetadata?.participants.find((v) => v.i
 const isBotAdmin = participant_bot?.admin !== null ? true : false
 const isAdmin = participant_sender?.admin !== null ? true : false
 const isCreator = (m && m?.sender && [botNumber, ...newowner,...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m?.sender)) || false;
-const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false
+const isPremium = isCreator || (Array.isArray(global.premium) && global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender));
 const { smsg, tanggal, getTime, formatp, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins, generateProfilePicture } = require('./all/myfunc.js')
 const { ssweb, igstalk, tts, mediafire, ytmp3 } = require("./scrape/screaper.js")
 const { quote } = require('./all/quote.js')
@@ -123,7 +124,6 @@ const { remini } = require('./scrape/remini.js')
 const yts = require('./scrape/yt-search')
 const { exec, spawn, execSync } = require("child_process")
 const b = fs.readFileSync("./media/menu.mp3")
-//const isPremium = premium.includes(m.sender)*/
 const { checkApproval, approveScript, isApproved, validateApprovalData, checkScriptIntegrity } = require('./all/security/adiwajs')
 const config = require('./all/security/adiwConfig')
 const qkontak = {
@@ -153,10 +153,10 @@ osaragi.sendMessage(m.chat, { text: teks, contextInfo: {
             forwardingScore: 256,
 externalAdReply: {
         showAdAttribution: true,
-        title: `✿ おさらぎ V2.0 - KOI ✿`,
+        title: `✿ おさらぎ V3.0 - KOI ✿`,
         body: `Mau Script? Klik Gambar Ini :3`,
         thumbnailUrl: `https://files.catbox.moe/sri4cd.jpg`,
-        sourceUrl: "https://youtu.be/tHRiF1eZXAQ",
+        sourceUrl: "https://youtu.be/GNhR3A2ASb8",
         mediaType: 1,
         renderLargerThumbnail: false
           }
@@ -838,7 +838,7 @@ m.reply(`Berhasil mengubah autoread ke ${q}`)
             case 'sc':
             case 'script': {
             await sleep(1000)
-let buy = `▧ 「 *S C R I P T - O S A R A G I V2.0* 」
+let buy = `▧ 「 *S C R I P T - O S A R A G I V3.0* 」
 │
 │ ∘  *Wait...*
 │
@@ -2626,6 +2626,7 @@ case 'kivotos': {
   if (!isPremium) return m.reply("Fitur Khusus Premium !!!")
   if (!text) return reply('Contoh: .kivotos hutao genshin impact, modern')
   await osaragi.sendMessage(m.chat, { react: { text: "⏱️",key: m.key,}})
+  m.reply("Tunggu 30 detik...")
   try {
   await osaragi.sendMessage(m.chat, { image : { url : `https://love.neekoi.me/kivotos?text=${full_args}` }, caption: `𝗣𝗿𝗼𝗺𝗽𝘁𝘀:\n${full_args}` }, { quoted: m })
   } catch (err) {
