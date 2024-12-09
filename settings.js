@@ -6,6 +6,7 @@ const moment = require('moment-timezone')
 
 //========== Setting Owner ==========//
 global.owner = "628813100198"
+global.premium = "628813100198"
 global.idsaluran = "-"
 global.namaowner = "snapdxkz"
 global.namabot = "おさらぎ"
